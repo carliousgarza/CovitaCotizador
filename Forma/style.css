@@ -168,6 +168,13 @@ background: #8604EA;
 background: #8604EA;
 }
 
+.form-wizard .btn.btn-submitfake,
+.form-wizard .btn.btn-submitfake:focus,
+.form-wizard .btn.btn-submitfake:active:focus,
+.form-wizard .btn.btn-submitfake.active:focus {
+background: #8604EA;
+}
+
 .form-wizard .btn.btn-previous,
 .form-wizard .btn.btn-previous:focus,
 .form-wizard .btn.btn-previous:active:focus,
