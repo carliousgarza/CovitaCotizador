@@ -1,21 +1,13 @@
-<?php
-  echo "hola";
-  mail("carlosfgarza@gmail.com", "Hola", "Hola");
-  mail("vale.huerta2000@gmail.com", "Hola", "Hola");
-  mail("pagtzc@gmail.com", "Hola", "Hola");
-  echo "se mando el mail";
- ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Employee Account | Form Wizard</title>
+  <title>Cotizador Mayoreo Covita</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500'>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./forma.css">
 
 </head>
 
@@ -162,7 +154,7 @@
               </div>
               <div class="form-wizard-buttons">
                 <button type="button" class="btn btn-previous">Anterior</button>
-                <button type="submit" class="btn btn-submit" >Enviar</button>
+                <button type="submit" class="btn btn-submit" name="submit" value="submit" >Enviar</button>
               </div>
             </fieldset>
             <!-- Form Step 4 -->
@@ -264,7 +256,8 @@
 
       // submit
       $('.form-wizard').on('submit', function(e) {
-        let baseUrl = "www.covita.net/cotizador.html?"
+        console.log("e", e)
+        let baseUrl = "www.covita.mx/forma.php?"
         // fields validation
         $(this).find('.required').each(function() {
 
@@ -277,83 +270,26 @@
             $(this).removeClass('input-error');
           }
         });
-        console.log(baseUrl)
+
+        baseUrl = encodeURIComponent(baseUrl)
+
+        $.ajax({
+               url : './mailRequest.php',
+               type : 'POST',
+               data : {"baseUrl": baseUrl},
+               success : function (result) {
+                  console.log(result); // Here, you need to use response by PHP file.
+               },
+               error : function () {
+                  console.log ('error');
+               }
+
+             });
+
         e.preventDefault();
       });
-
-
   });
 
-
-
-
-
-  // image uploader scripts
-
-  var $dropzone = $('.image_picker'),
-      $droptarget = $('.drop_target'),
-      $dropinput = $('#inputFile'),
-      $dropimg = $('.image_preview'),
-      $remover = $('[data-action="remove_current_image"]');
-
-  $dropzone.on('dragover', function() {
-    $droptarget.addClass('dropping');
-    return false;
-  });
-
-  $dropzone.on('dragend dragleave', function() {
-    $droptarget.removeClass('dropping');
-    return false;
-  });
-
-  $dropzone.on('drop', function(e) {
-    $droptarget.removeClass('dropping');
-    $droptarget.addClass('dropped');
-    $remover.removeClass('disabled');
-    e.preventDefault();
-
-    var file = e.originalEvent.dataTransfer.files[0],
-        reader = new FileReader();
-
-    reader.onload = function(event) {
-      $dropimg.css('background-image', 'url(' + event.target.result + ')');
-    };
-
-    console.log(file);
-    reader.readAsDataURL(file);
-
-    return false;
-  });
-
-  $dropinput.change(function(e) {
-    $droptarget.addClass('dropped');
-    $remover.removeClass('disabled');
-    $('.image_title input').val('');
-
-    var file = $dropinput.get(0).files[0],
-        reader = new FileReader();
-
-    reader.onload = function(event) {
-      $dropimg.css('background-image', 'url(' + event.target.result + ')');
-    }
-
-    reader.readAsDataURL(file);
-  });
-
-  $remover.on('click', function() {
-    $dropimg.css('background-image', '');
-    $droptarget.removeClass('dropped');
-    $remover.addClass('disabled');
-    $('.image_title input').val('');
-  });
-
-  $('.image_title input').blur(function() {
-    if ($(this).val() != '') {
-      $droptarget.removeClass('dropped');
-    }
-  });
-
-  // image uploader scripts
 
   </script>
 
