@@ -65,15 +65,15 @@
           <div class="panel-body">
             <dl class="dl-horizontal">
               <dt>Nombre</dt>
-              <dd><strong>Eduardo Lamas</strong></dd>
+              <dd id="customer_name"><strong>Eduardo Lamas</strong></dd>
               <dt>Industria</dt>
-              <dd>Compra Equipos Medicos</dd>
+              <dd id="customer_industry">Compra Equipos Medicos</dd>
               <dt>Direccion</dt>
-              <dd>Monterrey, Mexico</dd>
+              <dd id="customer_address">Monterrey, Mexico</dd>
               <dt>Telefono</dt>
-              <dd>123.4456.4567</dd>
+              <dd id="customer_phone">123.4456.4567</dd>
               <dt>Correo</dt>
-              <dd>lalo@lalo.com</dd>
+              <dd id="customer_email">lalo@lalo.com</dd>
               <dt>RFC</dt>
               <dd class="mono">123456789</dd>
               <dt>&nbsp;</dt>
@@ -223,6 +223,20 @@
   </div>
 </div>
 <!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const nombre = urlParams.get('Nombre');
+  const apellido = urlParams.get('Apellido');
+  const mail = urlParams.get('Correo');
+  const phone = urlParams.get('Phone');
 
+  console.log(nombre, apellido, mail, phone)
+  $('#customer_name').html(nombre + " " + apellido)
+  $('#customer_email').html(mail)
+  $('#customer_phone').html(phone)
+
+</script>
 </body>
 </html>

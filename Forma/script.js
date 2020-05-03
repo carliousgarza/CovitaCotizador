@@ -20,7 +20,6 @@ function bar_progress(progress_line_object, direction) {
 }
 
 jQuery(document).ready(function() {
-		let formItems = {}
     /*
         Form
     */
@@ -86,10 +85,8 @@ jQuery(document).ready(function() {
     // submit
     $('.form-wizard').on('submit', function(e) {
 			let baseUrl = "www.covita.net/cotizador.html?"
-			console.log(formItems)
     	// fields validation
     	$(this).find('.required').each(function() {
-				formItems[$(this)[0].name] = $(this).val()
 
 				baseUrl = baseUrl + $(this)[0].name + "=" + $(this).val() + "&"
 
