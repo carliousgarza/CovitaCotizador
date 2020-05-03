@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
+<head><meta charset="gb18030">
+
   <title>Cotizador Mayoreo Covita</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500'>
-  <link rel="stylesheet" href="./forma.css">
+  <link rel="stylesheet" href="./css/forma.css">
 
 </head>
 
@@ -256,7 +256,7 @@
 
       // submit
       $('.form-wizard').on('submit', function(e) {
-        console.log("e", e)
+        e.preventDefault();
         let baseUrl = "www.covita.mx/forma.php?"
         // fields validation
         $(this).find('.required').each(function() {
@@ -271,22 +271,23 @@
           }
         });
 
-        baseUrl = encodeURIComponent(baseUrl)
+        baseUrl = baseUrl.trim();
+        baseUrl = baseUrl.replace(/\s/g, '+');
 
         $.ajax({
                url : './mailRequest.php',
                type : 'POST',
                data : {"baseUrl": baseUrl},
                success : function (result) {
-                  console.log(result); // Here, you need to use response by PHP file.
+                  alert("Tu cotizaci贸n est谩 siendo revisada por un ejecutivo de Covita.");
+                  window.location.href = "https://www.covita.mx"
                },
                error : function () {
-                  console.log ('error');
+                  alert("Hubo un error en el servidor, por favor intenta mas tarde.");
+                  window.location.href = "https://www.covita.mx"
                }
 
              });
-
-        e.preventDefault();
       });
   });
 
