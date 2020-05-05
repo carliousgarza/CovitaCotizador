@@ -2,14 +2,14 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Invoice Template</title>
+  <title>Cotización - Covita</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div class="container invoice">
+<div class="container invoice" id="container-invoice">
   <div class="invoice-header">
     <div class="row">
       <div class="col-xs-8">
@@ -29,6 +29,7 @@
           </ul>
         </div>
       </div>
+      
     </div>
   </div>
   <div class="invoice-body">
@@ -60,7 +61,7 @@
       <div class="col-xs-7">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Customer Details</h3>
+            <h3 class="panel-title">Detalles del cliente</h3>
           </div>
           <div class="panel-body">
             <dl class="dl-horizontal">
@@ -74,8 +75,6 @@
               <dd id="customer_phone">123.4456.4567</dd>
               <dt>Correo</dt>
               <dd id="customer_email">lalo@lalo.com</dd>
-              <dt>RFC</dt>
-              <dd class="mono">123456789</dd>
               <dt>&nbsp;</dt>
               <dd>&nbsp;</dd>
           </div>
@@ -84,126 +83,65 @@
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Products</h3>
+        <h3 class="panel-title">Productos</h3>
       </div>
       <table class="table table-bordered table-condensed">
         <thead>
           <tr>
-            <th>Item / Details</th>
-            <th class="text-center colfix">Unit Cost</th>
-            <th class="text-center colfix">Sum Cost</th>
-            <th class="text-center colfix">Discount</th>
-            <th class="text-center colfix">Tax</th>
+            <th>Producto</th>
+            <th class="text-center colfix">Costo unitario</th>
+            <th class="text-center colfix">Subtotal</th>
+            <th class="text-center colfix">Impuesto</th>
             <th class="text-center colfix">Total</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>
+            <td id="product">
               Lorem Ipsum Dolor
               <br>
               <small class="text-muted">The best lorem in town, try it now or leave forever</small>
             </td>
-            <td class="text-right">
+            <td class="text-right" id="unit_price">
               <span class="mono">$1,000.00</span>
               <br>
-              <small class="text-muted">Before Tax</small>
+              <small class="text-muted">Antes de impuestos</small>
             </td>
             <td class="text-right">
-              <span class="mono">$18,000.00</span>
+              <span class="mono" id="subtotal">$18,000.00</span>
               <br>
-              <small class="text-muted">18 Units</small>
+              <small class="text-muted" id="units">18 Units</small>
             </td>
             <td class="text-right">
-              <span class="mono">- $1,800.00</span>
+              <span class="mono" id="taxed_amount">+ $3,240.00</span>
               <br>
-              <small class="text-muted">Special -10%</small>
+              <small class="text-muted" id="tax">IVA 16%</small>
             </td>
             <td class="text-right">
-              <span class="mono">+ $3,240.00</span>
+              <strong class="mono" id="total">$19,440.00</strong>
               <br>
-              <small class="text-muted">VAT 20%</small>
-            </td>
-            <td class="text-right">
-              <strong class="mono">$19,440.00</strong>
-              <br>
-              <small class="text-muted mono">$16,200.00</small>
             </td>
           </tr>
+        </tbody>
+      </table>
+    </div>
 
-          <tr>
-            <td>
-              Sit Amet Dolo
-              <br>
-              <small class="text-muted">Now you may sit</small>
-            </td>
-            <td class="text-right">
-              <span class="mono">$120.00</span>
-              <br>
-              <small class="text-muted">Before Tax</small>
-            </td>
-            <td class="text-right">
-              <span class="mono">$240.00</span>
-              <br>
-              <small class="text-muted">2 Units</small>
-            </td>
-            <td class="text-right">
-              <span class="mono">- $0.00</span>
-              <br>
-              <small class="text-muted">-</small>
-            </td>
-            <td class="text-right">
-              <span class="mono">+ $72.00</span>
-              <br>
-              <small class="text-muted">VAT:20% S:10%</small>
-            </td>
-            <td class="text-right">
-              <strong class="mono">$312.00</strong>
-              <br>
-              <small class="text-muted mono">$240.00</small>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="panel panel-default">
-      <table class="table table-bordered table-condensed">
-        <thead>
-          <tr>
-            <td class="text-center col-xs-1">Sub Total</td>
-            <td class="text-center col-xs-1">Discount</td>
-            <td class="text-center col-xs-1">Total</td>
-            <td class="text-center col-xs-1">Tax</td>
-            <td class="text-center col-xs-1">Final</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th class="text-center rowtotal mono">$18,240.00</th>
-            <th class="text-center rowtotal mono">-$1,800.00</th>
-            <th class="text-center rowtotal mono">$16,440.00</th>
-            <th class="text-center rowtotal mono">$3,312.00</th>
-            <th class="text-center rowtotal mono">$19,752.00</th>
-          </tr>
-        </tbody>
-      </table>
-    </div>
     <div class="row">
       <div class="col-xs-7">
         <div class="panel panel-default">
           <div class="panel-body">
-            <i>Comments / Notes</i>
-            <hr style="margin:3px 0 5px" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit repudiandae numquam sit facere blanditiis, quasi distinctio ipsam? Libero odit ex expedita, facere sunt, possimus consectetur dolore, nobis iure amet vero.
+            <i>Comentarios</i>
+            <hr style="margin:3px 0 5px" /> <span id="comments"></span>
           </div>
         </div>
       </div>
       <div class="col-xs-5">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Payment Method</h3>
+            <h3 class="panel-title">Metodos de pago</h3>
           </div>
           <div class="panel-body">
-            <p>For your convenience, you may deposite the final ammount at one of our banks</p>
+            <p>Para su comodidad, puede depositar la cantidad final en una de nuestras cuentas: </p>
             <ul class="list-unstyled">
               <li>Alpha Bank - <span class="mono">MO123456789456123</span></li>
               <li>Beta Bank - <span class="mono">MO123456789456123</span></li>
@@ -215,27 +153,53 @@
     </div>
 
   </div>
-  <div class="invoice-footer">
-    Thank you for choosing our services.
-    <br/> We hope to see you again soon
-    <br/>
-    <strong>~ACME~</strong>
-  </div>
 </div>
 <!-- partial -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
 <script>
   const urlParams = new URLSearchParams(window.location.search);
+  if(urlParams.get("Producto")){
   const nombre = urlParams.get('Nombre');
   const apellido = urlParams.get('Apellido');
   const mail = urlParams.get('Correo');
   const phone = urlParams.get('Phone');
-
-  console.log(nombre, apellido, mail, phone)
+  const product = urlParams.get('Producto');
+  const quantity = urlParams.get('Cantidad');
+  const address = urlParams.get('Direccion')
+  const city = urlParams.get('Ciudad')
+  const cp = urlParams.get('Codigo_Postal')
+  const state = urlParams.get('Estado')
+  const country = urlParams.get('Pais')
+  const comments = urlParams.get('Comentarios')
+  let unit_price
+  
+  if(product === "Termometro")
+    unit_price = 59
+  else if(product === "ProtectorFacial")
+    unit_price = 19
+  
+  const subtotal = unit_price * quantity
+  const taxed_amount = subtotal *.16
+  const total = subtotal + taxed_amount
   $('#customer_name').html(nombre + " " + apellido)
   $('#customer_email').html(mail)
   $('#customer_phone').html(phone)
+  $('#customer_mail').html(mail)
+  $('#customer_address').html(`${address} - ${cp}, ${city}, ${state}. ${country}`)
+  $('#product').html(product)
+  $('#units').html(`${quantity} unidades`)
+  $('#unit_price').html(`$ ${unit_price.toFixed(2)}`)
+  $('#subtotal').html(`$ ${subtotal.toFixed(2)}`)
+  $('#taxed_amount').html(`+ $ ${taxed_amount.toFixed(2)}`)
+  $("#total").html(`$ ${total}`)
+  $('#comments').html(comments)
+}
+else{
+  $('#container-invoice').html("404 - Not Found")
+}
+
+
 
 </script>
 </body>
