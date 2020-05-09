@@ -1,6 +1,6 @@
 .form-box {
-	padding-top: 350px;
-	padding-bottom: 350px;
+	padding-top: 20px;
+	padding-bottom:350px;
 
 	background: rgba(134, 4, 234) ; /* Old browsers */
 	background: -moz-linear-gradient(top,   rgba(100, 4, 234,1) 0%, rgba(134, 4, 234,1)  51%, rgba(100, 4, 234,1) 100%); /* FF3.6-15 */
@@ -21,7 +21,8 @@
     font-weight: 300;
     color: #888;
     line-height: 30px;
-    text-align: center;
+	text-align: center;
+	margin: auto;
 }
 
 .form-wizard strong { font-weight: 500; }
